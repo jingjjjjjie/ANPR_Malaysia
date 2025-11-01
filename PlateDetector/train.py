@@ -114,24 +114,16 @@ def train_and_log(
     print(f"Wrote: {log_path}")
     return log_path
 
-# ------------ example usage ------------
 if __name__ == "__main__":
     train_and_log(
-        model_ckpt="../runs/plates/v2_leegame_kl4k60fps/weights/best.pt",
-        data_yaml="../dataset/V3_rainyKLnight_TaxiEV_SupplimentaryMoriningKL/data.yaml",
-        description='''
-                    Step 3: Expand domain coverage to rainy-night scenes and white-background plates (EVs/taxis) while preserving prior competencies. 
-                    We add 
-                    (a) 80 frames from a KL heavy-rain night dashcam video sampled at 1 frame every 3 seconds (source: https://www.youtube.com/watch?v=zUivW9aEz6A&t=8s
-                    ; unusable frames with severe glare/water-sheet occlusion removed after QC), 
-                    (b) 30 images of EV and taxi plates (white-background) to address under-representation (source: Google Images; Malaysia EVs and taxis), and 
-                    (c) 40 frames from a bright-daylight KL video sampled at 1 frame every 3 seconds (source: https://www.youtube.com/watch?v=AxQcSoA9vGQ&t=1398s).
-                    These 150 images are merged to create v3, mitigating catastrophic forgetting and specifically improving robustness to night-light glare, rain water blockage, low contrast, and white-plate typography. 
-                    ''',
-        out_project="../runs/plates",
-        out_name="v3_RainyKlNight_SupplimentaryMorning_TaxiEV",
+        model_ckpt="v2_best.pt",
+        data_yaml="../dataset/v3/data.yaml",
+        # write your description of the training session here
+        description= "",
+        out_project="../runs/plates", # your project output location
+        out_name="v3", # your project output name
         epochs=100,
         imgsz=1280,
         batch=2,
-        device=0  # set -1 for CPU
+        device=0  # using cuda device set 'cpu' for CPU
     )
