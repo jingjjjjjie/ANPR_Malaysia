@@ -15,7 +15,6 @@ conda create -n anpr python=3.9 -y
 conda activate anpr
 ```
 
----
 
 ### 2️⃣ Install Dependencies  
 
@@ -28,8 +27,6 @@ pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu12
 ```bash
 pip install -r requirements.txt
 ```
-
----
 
 ## 📦 Dataset Setup  
 
@@ -56,7 +53,6 @@ streamlit run app.py
 
 The app should launch automatically in your default web browser.
 
----
 
 ## 📁 Project Structure  
 
