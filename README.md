@@ -40,9 +40,7 @@ You can obtain the **training**, **testing**, and **validation** datasets from [
 3. Download the dataset code and files.  
 4. Extract the **images** and **labels** into your project’s dataset directory.  
 
-![Download Dataset](assets/download_dataset.png)
-
----
+![Download Dataset](assets/download_dataset.PNG)
 
 ## 🚀 Running the App  
 
@@ -57,14 +55,6 @@ streamlit run app.py
 ```
 
 The app should launch automatically in your default web browser.
-
----
-
-## 🧩 Features  
-
-- Real-time number plate detection using YOLOv8  
-- Interactive and user-friendly Streamlit interface  
-- Modular and easy-to-extend architecture  
 
 ---
 
