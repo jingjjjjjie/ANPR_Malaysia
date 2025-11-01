@@ -1,4 +1,4 @@
-# 🧠 YOLO Streamlit App  
+# ANPR Malaysia 
 *A lightweight and data-driven approach to ANPR (Automatic Number Plate Recognition)*  
 
 ---
