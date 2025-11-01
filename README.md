@@ -25,7 +25,6 @@ pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu12
 ```
 
 #### 🔹 Install Other Dependencies
-Make sure you have a `requirements.txt` file, then run:
 ```bash
 pip install -r requirements.txt
 ```
@@ -41,7 +40,7 @@ You can obtain the **training**, **testing**, and **validation** datasets from [
 3. Download the dataset code and files.  
 4. Extract the **images** and **labels** into your project’s dataset directory.  
 
-![Download Dataset](download_dataset.png)
+![Download Dataset](assets/download_dataset.png)
 
 ---
 
