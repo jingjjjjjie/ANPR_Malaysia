@@ -35,7 +35,7 @@ def get_img_as_base64(file_path):
     return base64.b64encode(data).decode()
 
 # List your local images here
-local_images = ["./images_cropped/1_0.jpg","./images_cropped/2_0.jpg","./images_cropped/3_0.jpg","./images_cropped/4_0.jpg","./images_cropped/5_0.jpg","./images_cropped/6_0.jpg","./images_cropped/7_0.jpg","./images_cropped/8_2.jpg","./images_cropped/9_0.jpg","./images_cropped/10_0.jpg"]
+local_images = ["./images/images_cropped/1_0.jpg","./images/images_cropped/2_0.jpg","./images/images_cropped/3_0.jpg","./images/images_cropped/4_0.jpg","./images/images_cropped/5_0.jpg","./images/images_cropped/6_0.jpg","./images/images_cropped/7_0.jpg","./images/images_cropped/8_2.jpg","./images/images_cropped/9_0.jpg","./images/images_cropped/10_0.jpg"]
 
 base64_images = [f"data:image/png;base64,{get_img_as_base64(img)}" for img in local_images]
 

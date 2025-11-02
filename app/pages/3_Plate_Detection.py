@@ -47,7 +47,7 @@ def get_img_as_base64(file_path):
         data = f.read()
     return base64.b64encode(data).decode()
 
-local_images = ["./images/1.jpg", "./images/2.jpg", "./images/3.jpg", "./images/4.jpg", "./images/5.jpg", "./images/6.jpg", "./images/7.jpg", "./images/8.jpg", "./images/9.jpg", "./images/10.jpg"]  # add more if needed
+local_images = ["./images/images_original/1.jpg", "./images/images_original/2.jpg", "./images/images_original/3.jpg", "./images/images_original/4.jpg", "./images/images_original/5.jpg", "./images/images_original/6.jpg", "./images/images_original/7.jpg", "./images/images_original/8.jpg", "./images/images_original/9.jpg", "./images/images_original/10.jpg"]  # add more if needed
 base64_images = [f"data:image/png;base64,{get_img_as_base64(img)}" for img in local_images]
 
 clicked = clickable_images(

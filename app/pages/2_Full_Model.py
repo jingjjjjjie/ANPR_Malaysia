@@ -56,14 +56,14 @@ def get_img_as_base64(file_path):
     return base64.b64encode(data).decode()
 
 # example local images (adjust to your dataset)
-local_images = [f"./images/{i}.jpg" for i in range(1, 11)]
+local_images = [f"./images/images_original/{i}.jpg" for i in range(1, 11)]
 base64_images = [f"data:image/png;base64,{get_img_as_base64(img)}" for img in local_images]
 
 clicked = clickable_images(
     base64_images,
     titles=[f"Image #{i+1}" for i in range(len(local_images))],
-    div_style={"display": "flex", "justify-content": "center", "flex-wrap": "wrap", "gap": "10px"},
-    img_style={"margin": "5px", "height": "200px", "border-radius": "10px", "object-fit": "cover", "box-shadow": "0 2px 6px rgba(0,0,0,0.2)"},
+    div_style={"display": "flex", "justify-content": "center", "flex-wrap": "wrap"},
+    img_style={"margin": "5px", "height": "200px"},
 )
 
 # if user clicked on gallery image

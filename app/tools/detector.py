@@ -61,6 +61,31 @@ class PlateDetector:
 
         return results
 
+    def save_with_boxes(self, image: np.ndarray, original_name="image", save_path="output.jpg"):
+        """
+        Draw bounding boxes on the image and save the annotated result.
+        Args:
+            image (np.ndarray): Input image.
+            original_name (str): Used for labeling.
+            save_path (str): Path to save annotated image.
+        """
+        boxes = self.get_boxes(image)
+        annotated = image.copy()
+
+        for (x1, y1, x2, y2, conf) in boxes:
+            # Draw rectangle
+            cv2.rectangle(annotated, (x1, y1), (x2, y2), (0, 0, 255), 3)
+            # Put confidence label
+            label = f"{conf:.2f}"
+            cv2.putText(annotated, label, (x1, max(y1 - 10, 10)),
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
+
+        os.makedirs(os.path.dirname(save_path), exist_ok=True)
+        cv2.imwrite(save_path, annotated)
+        print(f"Annotated image saved to '{save_path}'")
+
+        return annotated
+
     def close(self):
         """Release YOLO model and clear GPU memory."""
         if self.model:
@@ -71,13 +96,19 @@ class PlateDetector:
 
 if __name__ == "__main__":
     weights = "../v3_best.pt"
-    image_path = "../images/10.jpg"
+    image_path = "../demo_predictions/ds.jpg"
     save_dir = "temp/"
 
     img = cv2.imread(image_path)
     if img is None:
         raise FileNotFoundError(f"Image not found: {image_path}")
 
-    detector = PlateDetector(weights, conf=0.6)
+    detector = PlateDetector(weights, conf=0.2)
+
+    # Save crops
     detector.crop(img, original_name=image_path, save_dir=save_dir)
+
+    # Save image with bounding boxes
+    detector.save_with_boxes(img, original_name=image_path, save_path=os.path.join(save_dir, "annotated.jpg"))
+
     detector.close()
