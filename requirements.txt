@@ -4,3 +4,5 @@ ultralytics
 easyocr
 matplotlib
 pandas
+streamlit
+st_clickable_images
