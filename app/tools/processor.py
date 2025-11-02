@@ -47,16 +47,26 @@ class ImagePreprocessor:
         confs = [r[2] for r in results]
         return sum(confs)/len(confs), results
 
-    def adaptive_ocr(self, path, display_steps=False, return_image=False, high=0.9, mid=0.7):
-        img = cv2.imread(path)
+    def adaptive_ocr(self, img_or_path, display_steps=False, return_image=False, high=0.9, mid=0.7):
+        # 1. Load image if a path
+        if isinstance(img_or_path, str):
+            img = cv2.imread(img_or_path)
+            if img is None:
+                raise FileNotFoundError(f"Image nots found at {img_or_path}")
+        else:
+            img = img_or_path  # already an OpenCV image
+
+        # 2. Resize and convert to grayscale
         img = self.resize(img)
         gray = self.to_gray(img)
 
+        # 3. First OCR pass
         conf1, res1 = self.ocr_conf(gray)
         best_conf, best_res, best_img = conf1, res1, gray
 
+        # 4. Decide preprocessing based on confidence
         if conf1 >= high:
-            # High confidence, return immediately
+            # High confidence: no extra preprocessing
             pass
         elif conf1 >= mid:
             # Medium confidence: light preprocessing (just gray)
@@ -66,30 +76,36 @@ class ImagePreprocessor:
         else:
             # Low confidence: full preprocessing
             proc = self.full_preprocess(gray)
-            if display_steps: self.display(proc)
+            if display_steps:
+                self.display(proc)
             conf2, res2 = self.ocr_conf(proc)
             if conf2 > best_conf:
                 best_conf, best_res, best_img = conf2, res2, proc
 
+        # 5. Return
         if return_image:
             return best_res, best_img
         else:
             return best_res
 
-processor = ImagePreprocessor(min_width=300, min_height=200, ocr_langs=['en'])
 
-# Get both OCR results and the processed image
-ocr_results, processed_image = processor.adaptive_ocr(
-    "Afternoon_1.jpg",
-    display_steps=True,
-    return_image=True,
-    high=0.9,
-    mid=0.7
-)
 
-# Print detected text
-for bbox, text, conf in ocr_results:
-    print(f"{text} ({conf:.2f})")
 
-# Optionally save the processed image
-cv2.imwrite("processed_output.jpg", processed_image)
+if __name__ == "__main__":
+    processor = ImagePreprocessor(min_width=300, min_height=200, ocr_langs=['en'])
+
+    # Get both OCR results and the processed image
+    ocr_results, processed_image = processor.adaptive_ocr(
+        "Afternoon_1.jpg",
+        display_steps=True,
+        return_image=True,
+        high=0.9,
+        mid=0.7
+    )
+
+    # Print detected text
+    for bbox, text, conf in ocr_results:
+        print(f"{text} ({conf:.2f})")
+
+    # Optionally save the processed image
+    cv2.imwrite("processed_output.jpg", processed_image)

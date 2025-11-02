@@ -11,7 +11,7 @@ st.set_page_config(page_title="YOLO License Plate Detector", layout="wide")
 st.markdown(
     """
     <h1 style='text-align: center; font-size: 48px;'>
-        License Plate Detector
+        Object Detection Module
     </h1>
     """,
     unsafe_allow_html=True
@@ -69,6 +69,8 @@ if uploaded_file is None and clicked > -1:
 # Run YOLO detection
 # ---------------------------
 if selected_image is not None:
+    st.write("---")
+    st.subheader('Detection Results') 
     # Detect plates
     crops = detector.crop(selected_image, original_name="selected_image", save_dir=None)
     annotated_image = selected_image.copy()
