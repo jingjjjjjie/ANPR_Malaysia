@@ -96,14 +96,14 @@ class PlateDetector:
 
 if __name__ == "__main__":
     weights = "../v3_best.pt"
-    image_path = "../demo_predictions/ds.jpg"
+    image_path = "../images/demo_predictions/fff.jpg"
     save_dir = "temp/"
 
     img = cv2.imread(image_path)
     if img is None:
         raise FileNotFoundError(f"Image not found: {image_path}")
 
-    detector = PlateDetector(weights, conf=0.2)
+    detector = PlateDetector(weights, conf=0.4)
 
     # Save crops
     detector.crop(img, original_name=image_path, save_dir=save_dir)

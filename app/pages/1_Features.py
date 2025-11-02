@@ -36,5 +36,12 @@ with col2:
 st.subheader("3. Smart Differentiation")
 st.write("Effectively differentiates genuine license plates from signboards and other plate-like text patterns.")
 
+col1, col2 = st.columns(2)
+
+with col1:
+    st.image("images/demo_predictions/e.jpg", caption="Plate-Like Signboards", use_container_width=True)
+
+with col2:
+    st.image("images/demo_predictions/f.jpg", caption="Signboards", use_container_width=True)
 
 st.markdown('---')
