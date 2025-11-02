@@ -70,8 +70,8 @@ class PlateDetector:
 
 
 if __name__ == "__main__":
-    weights = "weights/v3_best.pt"
-    image_path = "../dataset/merged_currated/valid/images/V5_CD_jpg.rf.b5d11e253908993169612b791ebfec8f.jpg"
+    weights = "../v3_best.pt"
+    image_path = "../images/10.jpg"
     save_dir = "temp/"
 
     img = cv2.imread(image_path)
