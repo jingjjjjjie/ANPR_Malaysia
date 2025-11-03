@@ -1,11 +1,10 @@
-# 🇲🇾 ANPR Malaysia  
+# ANPR Malaysia  
 *A lightweight and data-driven approach to ANPR (Automatic Number Plate Recognition)*  
 
----
 
 ## ⚙️ Environment Setup  
 
-### 1️⃣ Create and Activate the Conda Environment  
+### Create and Activate the Conda Environment  
 
 ```bash
 # Create a new conda environment
@@ -17,7 +16,7 @@ conda activate anpr
 
 ---
 
-### 2️⃣ Install Dependencies  
+### Install Dependencies  
 
 #### 🔹 Install PyTorch (CUDA 12.6 compatible)
 ```bash
@@ -31,7 +30,7 @@ pip install -r requirements.txt
 
 ---
 
-## 📦 Dataset Setup  
+## Dataset Setup  
 
 You can obtain the **training**, **testing**, and **validation** datasets from [Roboflow](https://app.roboflow.com/yolo-zmazg?group=LKaPTDt9jTcODXIwefFB).
 
@@ -44,7 +43,7 @@ You can obtain the **training**, **testing**, and **validation** datasets from [
 5. Place the folder in the structure shown below:  
 
 ```
-YOLO-ANPR/
+ProjectROOT/
 │
 ├── app.py                     # Streamlit application
 ├── requirements.txt           # Python dependencies
@@ -70,26 +69,26 @@ YOLO-ANPR/
 
 ---
 
-## 🚀 Running the App  
+## Running the App  
 
 Once your environment and datasets are ready:
 
 ```bash
 # Navigate to the app directory
-cd path/to/app
+cd ProjectROOT/app
 
 # Run the Streamlit app
-streamlit run app.py
+streamlit run home.py
 ```
 
 The app should launch automatically in your default web browser.
 
 ---
 
-## 📁 Project Structure  
+## Project Structure  
 
 ```
-YOLO-ANPR/
+ProjectROOT/
 │
 ├── app/                       # Streamlit application folder
 │   ├── app.py                 # Main Streamlit app script
@@ -104,20 +103,18 @@ YOLO-ANPR/
 │   └── V2_data/               # Optional alternate dataset version
 │
 ├── OcrModel/                  # OCR model files for plate text recognition
-└── plateDETECTOR/             # YOLO-based license plate detection model
+└── PlateDetector/             # YOLO-based license plate detection model
 ```
 
 ---
 
-## 💡 Notes  
+## Notes  
 
 - Ensure your GPU drivers are up to date for CUDA compatibility.  
 - If CUDA is not available, you can install CPU-only PyTorch instead.  
 - Recommended Python version: **3.9**  
-- Recommended YOLO version: **YOLOv8**  
+- 
 
 ---
 
-## 🏷️ Credits  
 
-Developed with ❤️ using **YOLOv8**, **Streamlit**, and **PyTorch**.
