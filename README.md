@@ -113,7 +113,6 @@ ProjectROOT/
 - Ensure your GPU drivers are up to date for CUDA compatibility.  
 - If CUDA is not available, you can install CPU-only PyTorch instead.  
 - Recommended Python version: **3.9**  
-- 
 
 ---
 
