@@ -4,12 +4,19 @@ st.set_page_config(page_title="License Plate OCR Pipeline", layout="centered")
 
 st.title("ANPR Pipeline")
 
+col1, col2 = st.columns(2)
+with col1:
+    st.metric(label="Object Detection", value="YOLOv8-nano")
+with col2:
+    st.metric(label="Ocr Model", value="EasyOCR")
+
 st.write(
     """
-    Welcome! You can explore our **features**, try out the **full ANPR model**,  
+    Explore our **features**, try out the **full ANPR model**, check our training datasets
     or test **individual modules** — just select a page from the sidebar.
     """
 )
+
 
 graph = """
 digraph LicensePlateOCR {
